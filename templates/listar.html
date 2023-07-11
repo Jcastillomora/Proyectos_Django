@@ -1,0 +1,33 @@
+{% extends "base.html" %} 
+
+{% block content %} 
+<h1>Listado de Vehiculos</h1>
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Marca</th>
+        <th scope="col">Modelo</th>
+        <th scope="col">Serial Carrocería</th>
+        <th scope="col">Serial Motor</th>
+        <th scope="col">Categoría</th>
+        <th scope="col">Precio</th>
+        <th scope="col">Condición de Precio</th>
+      </tr>
+    </thead>
+    <tbody>
+        {% for vehiculo in vehiculos %} 
+            <tr>
+                <td>{{vehiculo.marca}}</td>
+                <td>{{vehiculo.modelo}}</td>
+                <td>{{vehiculo.serial_carroceria}}</td>
+                <td>{{vehiculo.serial_motor}}</td>
+                <td>{{vehiculo.categoria}}</td>
+                <td>{{vehiculo.precio}}</td>
+                <td>{{vehiculo.condicion_precio}}</td>
+                <td>
+            </tr>
+        {% endfor %}       
+    </tbody>
+</table>    
+
+{% endblock content %}

@@ -1,0 +1,12 @@
+{% include "base.html" %} {% block content %} {% load crispy_forms_tags %}
+
+<div class="container py-5">
+<h1>Login</h1>
+<form method="post">
+{% csrf_token %}
+{{ login_form|crispy }}
+<button class="btn btn-primary" type="submit">Login</button>
+</form>
+<p class="text-center">Si no tienes una cuenta, registrate en el siguiente <a href="{% url 'register' %}">link</a></p>
+</div>
+{% endblock content %}
