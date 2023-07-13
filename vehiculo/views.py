@@ -16,9 +16,11 @@ import datetime
 
 
 # Create your views here.
+@login_required(login_url='/login/')
 def index(request):
     return render(request, 'index.html')
 
+@staff_member_required()
 @permission_required(perm='vehiculo.add_vehiculomodel', raise_exception=True)
 def vehiculo(request):
     context = {}
