@@ -1,18 +1,21 @@
-from django.http import HttpResponse, HttpResponseRedirect
-from django.views.generic import TemplateView
-from django.shortcuts import render
+import datetime
 from tokenize import PseudoExtras
-from .models import Vehiculo
-from django.contrib.auth import login, authenticate, logout
-from django.contrib.auth.forms import AuthenticationForm
-from django.contrib.auth.decorators import login_required, permission_required
-from django.contrib.admin.views.decorators import staff_member_required
+
 from django.contrib import messages
-from .forms import UserRegisterForm, UserRegisterForm, VehiculoForm
+from django.contrib.admin.views.decorators import staff_member_required
+from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.decorators import login_required, permission_required
+from django.contrib.auth.forms import AuthenticationForm
+from django.contrib.auth.mixins import (LoginRequiredMixin,
+                                        PermissionRequiredMixin)
 from django.contrib.auth.models import Permission, User
 from django.contrib.contenttypes.models import ContentType
-from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
-import datetime
+from django.http import HttpResponse, HttpResponseRedirect
+from django.shortcuts import render
+from django.views.generic import TemplateView
+
+from .forms import UserRegisterForm, VehiculoForm
+from .models import Vehiculo
 
 
 # Create your views here.
