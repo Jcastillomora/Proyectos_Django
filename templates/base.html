@@ -28,11 +28,13 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-            {% if user.is_authenticated %}
+        {% if user.is_authenticated %}
             <li class="nav-item">
               <a class="nav-link active" aria-current="page" href="{% url 'index' %}">Bienvenido {{user.username}}</a>
             </li>
-            {% if user.is_staff %}  
+            {% comment %} usuario con permiso add_vehiculomodel solo puede ver este boton {% endcomment %}
+            
+            {% if perms.vehiculo.add_vehiculomodel %}
             <li class="nav-item">
               <a class="nav-link" href="{% url 'agregar' %}">Agregar</a>
             </li>
@@ -44,7 +46,7 @@
               <a class="nav-link" href="{% url 'logout' %}">Salir</a>
             </li>
           </ul>
-      {% else %}
+        {% else %}
       <li class="nav-item">
         <a class="nav-link active" aria-current="page" href="{% url 'index' %}">Inicio</a>
       </li>
@@ -55,17 +57,7 @@
         <a class="nav-link" href="{% url 'login' %}">Login</a>
       </li>
       </ul>
-      {% endif %}
-
-          <form class="d-flex" role="search">
-            <input
-              class="form-control me-2"
-              type="search"
-              placeholder="Search"
-              aria-label="Search"
-            />
-            <button class="btn btn-outline-success" type="submit">Search</button>
-          </form>
+        {% endif %}
         </div>
       </div>
     </nav>
